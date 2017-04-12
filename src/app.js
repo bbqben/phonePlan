@@ -111,12 +111,19 @@ class App extends React.Component {
 	render() {
 		return(
 			<div>
-				<ul>
-					{data.map((option,i) => {
-						console.log(option);
-						return <Options data={option} currentLengthValue={this.state.currentLengthValue} key={option.optionTitle + i}/>
-					})}
-				</ul>
+				<div className="planOptions">
+					<ul>
+						{data.map((option,i) => {
+							console.log(option);
+							return <Options data={option} currentLengthValue={this.state.currentLengthValue} key={option.optionTitle + i}/>
+						})}
+					</ul>
+				</div>
+				<div className="planCalculations">
+					<div className="planCost"></div>
+					<div className="planDiscount"></div>
+					<div className="planTotal"></div>
+				</div>
 			</div>
 		)
 	}
