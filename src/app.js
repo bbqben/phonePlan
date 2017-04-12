@@ -12,17 +12,17 @@ const data = [
 			{
 				optionPrice: 5,
 				optionButtonLabel: "10-day",
-				planLengthValue: 1
+				planLengthValue: 0
 			},
 			{
 				optionPrice: 10,
 				optionButtonLabel: "30-day",
-				planLengthValue: 2
+				planLengthValue: 1
 			},
 			{
 				optionPrice: 25,
 				optionButtonLabel: "90-day",
-				planLengthValue: 3
+				planLengthValue: 2
 			}
 		]
 	},
@@ -95,7 +95,10 @@ class App extends React.Component {
 	constructor() {
 		super();
 		this.state = {
-			planLengthValue: 2
+			currentLengthValue: 1,
+			currentTalkValue: 3,
+			currentTextValue: 1,
+			currentDataValue: 3
 		}
 	}
 
@@ -111,7 +114,7 @@ class App extends React.Component {
 				<ul>
 					{data.map((option,i) => {
 						console.log(option);
-						return <Options data={option} currentLengthValue={this.state.planLengthValue} key={option.optionTitle + i}/>
+						return <Options data={option} currentLengthValue={this.state.currentLengthValue} key={option.optionTitle + i}/>
 					})}
 				</ul>
 			</div>
