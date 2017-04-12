@@ -6,21 +6,22 @@ import Options from './components/Options';
 const data = [
 	{
 		optionImg: 'fa fa-calendar',
+		optionType: "length",
 		optionTitle: "Plan Length",
 		optionDescription: "Select the length of your plan",
 		optionButtons: [
 			{
-				optionPrice: 5,
+				optionValue: 5,
 				optionButtonLabel: "10-day",
 				planLengthValue: 0
 			},
 			{
-				optionPrice: 10,
+				optionValue: 10,
 				optionButtonLabel: "30-day",
 				planLengthValue: 1
 			},
 			{
-				optionPrice: 25,
+				optionValue: 25,
 				optionButtonLabel: "90-day",
 				planLengthValue: 2
 			}
@@ -28,6 +29,7 @@ const data = [
 	},
 	{
 		optionImg: 'fa fa-user',
+		optionType: "talk",
 		optionTitle: "Unlimited Talk",
 		optionDescription: "Are you a nationwide talker or do you only talk within your province?",
 		optionButtons: [
@@ -51,6 +53,7 @@ const data = [
 	},
 	{
 		optionImg: 'fa fa-comments',
+		optionType: "text",
 		optionTitle: "Unlimited Text",
 		optionDescription: "Do you need text messaging on your plan?",
 		optionButtons: [
@@ -66,6 +69,7 @@ const data = [
 	},
 	{
 		optionImg: 'fa fa-cloud',
+		optionType: "data",
 		optionTitle: "Data",
 		optionDescription: "How much data do you need?",
 		optionButtons: [
@@ -103,11 +107,48 @@ class App extends React.Component {
 			planDiscountValue: 0,
 			planTotalValue: 10
 		}
+		this.handleChange = this.handleChange.bind(this);
+		this.calculateTotal = this.calculateTotal.bind(this);
 	}
 
 
 	componentDidMount() {
 
+	}
+
+	handleChange(e) {
+
+		let dataType = e.target.dataset.type;
+		let dataValue = e.target.dataset.value;
+
+		if (dataType === "length") {
+			this.setState({
+				currentLengthValue: dataValue
+			})
+		} else if (dataType === "talk") {
+			this.setState({
+				currentTalkValue: dataValue
+			})
+		} else if (dataType === "text") {
+			this.setState({
+				currentTextValue: dataValue
+			})
+		} else if (dataType === "data") {
+			this.setState({
+				currentDataValue: dataValue
+			})
+		}
+		console.log(`I made a change to ${dataType} and changed it to ${dataValue}`)
+		calculateTotal();
+	}
+
+
+	calculateTotal() {
+		//Calculate length value
+		
+		//Calculate talk value
+		//Calculate text value
+		//Calculate data value
 	}
 
 
@@ -117,8 +158,8 @@ class App extends React.Component {
 				<div className="planOptions">
 					<ul>
 						{data.map((option,i) => {
-							console.log(option);
-							return <Options data={option} currentLengthValue={this.state.currentLengthValue} key={option.optionTitle + i}/>
+							// console.log(option);
+							return <Options data={option} currentLengthValue={this.state.currentLengthValue} key={option.optionTitle + i} state={this.state} handleChange={ this.handleChange }/>
 						})}
 					</ul>
 				</div>
