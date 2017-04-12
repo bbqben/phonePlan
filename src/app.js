@@ -98,7 +98,10 @@ class App extends React.Component {
 			currentLengthValue: 1,
 			currentTalkValue: 3,
 			currentTextValue: 1,
-			currentDataValue: 3
+			currentDataValue: 3,
+			planCostValue: 10,
+			planDiscountValue: 0,
+			planTotalValue: 10
 		}
 	}
 
@@ -120,9 +123,18 @@ class App extends React.Component {
 					</ul>
 				</div>
 				<div className="planCalculations">
-					<div className="planCost"></div>
-					<div className="planDiscount"></div>
-					<div className="planTotal"></div>
+					<div className="planCost">
+						<p>${this.state.planCostValue}</p>
+						<p>Plan Costs</p>
+					</div>
+					<div className="planDiscount">
+						<p>${this.state.planDiscountValue}</p>
+						<p>Plan Discounts</p>
+					</div>
+					<div className="planTotal">
+						<p>${this.state.planTotalValue}</p>
+						<p>Total (+ tax)</p>
+					</div>
 				</div>
 			</div>
 		)
