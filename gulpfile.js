@@ -12,7 +12,10 @@ const concat = require('gulp-concat');
 const autoprefixer = require('gulp-autoprefixer');
 
 gulp.task('styles', () => {
-    return gulp.src('./dev/styles/**/*.scss')
+    return gulp.src('./src/styles/**/*.scss')
+        .pipe(plumber({
+          errorHandler: notify.onError("Error: <%= error.message %>")
+        }))
         .pipe(sass().on('error',sass.logError))
         .pipe(autoprefixer('last 2 versions', 'safari 5', 'ie 8', 'ie 9', 'opera 12.1'))
         .pipe(concat('style.css'))

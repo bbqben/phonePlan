@@ -10,16 +10,19 @@ const data = [
 		optionDescription: "Select the length of your plan",
 		optionButtons: [
 			{
-				optionButtonPrice: 5,
-				optionButtonLabel: "10-day"
+				optionPrice: 5,
+				optionButtonLabel: "10-day",
+				planLengthValue: 1
 			},
 			{
-				optionButtonPrice: 10,
-				optionButtonLabel: "30-day"
+				optionPrice: 10,
+				optionButtonLabel: "30-day",
+				planLengthValue: 2
 			},
 			{
-				optionButtonPrice: 25,
-				optionButtonLabel: "90-day"
+				optionPrice: 25,
+				optionButtonLabel: "90-day",
+				planLengthValue: 3
 			}
 		]
 	},
@@ -29,20 +32,20 @@ const data = [
 		optionDescription: "Are you a nationwide talker or do you only talk within your province?",
 		optionButtons: [
 			{
-				optionButtonPrice: 17,
-				optionButtonLabel: "Provice-Wide"
+				optionButtonLabel: "Province Wide",
+				optionValue: [10, 17, 51]
 			},
 			{
-				optionButtonPrice: 22,
-				optionButtonLabel: "Canada-Wide"
+				optionButtonLabel: "Canada Wide",
+				optionValue: [12, 22, 66]
 			},
 			{
-				optionButtonPrice: 27,
-				optionButtonLabel: "Canada-Wide and U.S"
+				optionButtonLabel: "Canada Wide and U.S.",
+				optionValue: [15, 27, 81]
 			},
 			{
-				optionButtonPrice: 0,
-				optionButtonLabel: "No Talk"
+				optionButtonLabel: "No Talk",
+				optionValue: 0
 			}
 		]
 	},
@@ -52,12 +55,12 @@ const data = [
 		optionDescription: "Do you need text messaging on your plan?",
 		optionButtons: [
 			{
-				optionButtonPrice: 15,
-				optionButtonLabel: "Global"
+				optionButtonLabel: "Global",
+				optionValue: [6, 15, 45]
 			},
 			{
-				optionButtonPrice: 0,
-				optionButtonLabel: "No Text"
+				optionButtonLabel: "No Text",
+				optionValue: 0
 			}
 		]
 	},
@@ -67,20 +70,20 @@ const data = [
 		optionDescription: "How much data do you need?",
 		optionButtons: [
 			{
-				optionButtonPrice: 20,
-				optionButtonLabel: "1GB/30 Days"
+				optionButtonLabel: ["150MB", "1GB", "3GB"],
+				optionValue: [10, 20, 50]
 			},
 			{
-				optionButtonPrice: 28,
-				optionButtonLabel: "2GB/30 Days"
+				optionButtonLabel: ["500MB", "2GB", "6GB"],
+				optionValue: [15, 28, 59]
 			},
 			{
-				optionButtonPrice: 48,
-				optionButtonLabel: "4GB/30 Days"
+				optionButtonLabel: ["1GB", "4GB", "12GB"],
+				optionValue: [20, 48, 125]
 			},
 			{
-				optionButtonPrice: 0,
-				optionButtonLabel: "No Data"
+				optionButtonLabel: "No Data",
+				optionValue: 0
 			}
 		]
 	}
@@ -92,7 +95,7 @@ class App extends React.Component {
 	constructor() {
 		super();
 		this.state = {
-
+			planLengthValue: 2
 		}
 	}
 
@@ -108,7 +111,7 @@ class App extends React.Component {
 				<ul>
 					{data.map((option,i) => {
 						console.log(option);
-						return <Options data={option} key={option.optionTitle + i}/>
+						return <Options data={option} currentLengthValue={this.state.planLengthValue} key={option.optionTitle + i}/>
 					})}
 				</ul>
 			</div>
