@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import Options from './components/Options';
-
+import Footer from './components/Footer';
 
 const data = [
 	{
@@ -103,17 +103,23 @@ class App extends React.Component {
 			currentTalkValue: 3,
 			currentTextValue: 1,
 			currentDataValue: 3,
+			lengthPrice: 0,
+			talkPrice: 0,
+			textPrice: 0,
+			dataPrice: 0,
 			planCostValue: 10,
-			planDiscountValue: 0,
-			planTotalValue: 10
+			discountValue: 0,
+			totalValue: 10
 		}
 		this.handleChange = this.handleChange.bind(this);
 		this.calculateTotal = this.calculateTotal.bind(this);
+		this.updatePrices = this.updatePrices.bind(this);
+		this.checkIfArray = this.checkIfArray.bind(this);
 	}
 
 
 	componentDidMount() {
-
+		this.updatePrices();
 	}
 
 	handleChange(e) {
@@ -123,25 +129,62 @@ class App extends React.Component {
 
 		if (dataType === "length") {
 			this.setState({
-				currentLengthValue: dataValue
+				currentLengthValue: parseInt(dataValue)
+			}, () => {
+				this.updatePrices();
 			})
 		} else if (dataType === "talk") {
 			this.setState({
-				currentTalkValue: dataValue
+				currentTalkValue: parseInt(dataValue)
+			}, () => {
+				this.updatePrices();
 			})
 		} else if (dataType === "text") {
 			this.setState({
-				currentTextValue: dataValue
+				currentTextValue: parseInt(dataValue)
+			}, () => {
+				this.updatePrices();
 			})
 		} else if (dataType === "data") {
 			this.setState({
-				currentDataValue: dataValue
+				currentDataValue: parseInt(dataValue)
+			}, () => {
+				this.updatePrices();
 			})
 		}
 		console.log(`I made a change to ${dataType} and changed it to ${dataValue}`)
-		calculateTotal();
 	}
 
+	updatePrices() {
+		let lengthPrice = data[0].optionButtons[this.state.currentLengthValue].optionValue;
+		let talkPrice = data[1].optionButtons[this.state.currentTalkValue].optionValue;
+		let textPrice = data[2].optionButtons[this.state.currentTextValue].optionValue;
+		let dataPrice = data[3].optionButtons[this.state.currentDataValue].optionValue;
+
+
+		lengthPrice = this.checkIfArray(lengthPrice);
+		talkPrice = this.checkIfArray(talkPrice);
+		textPrice = this.checkIfArray(textPrice);
+		dataPrice = this.checkIfArray(dataPrice);
+
+		console.log(`I just set the state of things`)
+		this.setState({
+			lengthPrice: lengthPrice,
+			talkPrice: talkPrice,
+			textPrice: textPrice,
+			dataPrice: dataPrice
+		})
+	}
+
+	checkIfArray(possiblyArray) {
+		if (Array.isArray(possiblyArray)) {
+			//If possiblyArray is an array then return correct value with respect to the plan length
+			possiblyArray = possiblyArray[this.state.currentLengthValue];
+			return possiblyArray;
+		} else {
+			return possiblyArray;
+		}
+	}
 
 	calculateTotal() {
 		//Calculate length value
@@ -153,30 +196,18 @@ class App extends React.Component {
 
 
 	render() {
+		console.log(data);
 		return(
 			<div>
 				<div className="planOptions">
 					<ul>
 						{data.map((option,i) => {
 							// console.log(option);
-							return <Options data={option} currentLengthValue={this.state.currentLengthValue} key={option.optionTitle + i} state={this.state} handleChange={ this.handleChange }/>
+							return <Options data={option} currentLengthValue={this.state.currentLengthValue} key={option.optionTitle + i} state={this.state} handleChange={this.handleChange}/>
 						})}
 					</ul>
 				</div>
-				<div className="planCalculations">
-					<div className="planCost">
-						<p>${this.state.planCostValue}</p>
-						<p>Plan Costs</p>
-					</div>
-					<div className="planDiscount">
-						<p>${this.state.planDiscountValue}</p>
-						<p>Plan Discounts</p>
-					</div>
-					<div className="planTotal">
-						<p>${this.state.planTotalValue}</p>
-						<p>Total (+ tax)</p>
-					</div>
-				</div>
+				<Footer  state={this.state} calculateTotal={this.calculateTotal}/>
 			</div>
 		)
 	}
