@@ -122,7 +122,10 @@ class App extends React.Component {
 
 
 	componentDidMount() {
-		this.updatePrices();
+
+		let element = document.getElementById('Plan Length1'); //Selects the Plan Length button labelled '30-days'
+		element.checked = true; //Upon initialization it presets the button to be selected by default
+
 	}
 
 	handleChange(e) {
@@ -282,16 +285,17 @@ class App extends React.Component {
 
 
 	render() {
-		console.log(data);
 		return(
 			<div>
 				<div className="planOptions">
-					<ul>
-						{data.map((option,i) => {
-							// console.log(option);
-							return <Options data={option} currentLengthValue={this.state.currentLengthValue} key={option.optionTitle + i} state={this.state} handleChange={this.handleChange}/>
-						})}
-					</ul>
+					<div className="planOptions__wrapper">
+						<ul>
+							{data.map((option,i) => {
+								// console.log(option);
+								return <Options data={option} currentLengthValue={this.state.currentLengthValue} key={option.optionTitle + i} state={this.state} handleChange={this.handleChange}/>
+							})}
+						</ul>
+					</div>
 				</div>
 				<Footer  state={this.state} calculateTotal={this.calculateTotal}/>
 			</div>

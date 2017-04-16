@@ -1,0 +1,126 @@
+div {
+	.planOptions {
+		background: linear-gradient(90deg,#1BA6B8 50%,#49C0CF 50%);
+		.planOptions__wrapper {
+			max-width: 1200px;
+			margin: 0 auto;
+			// background-color: linear-gradient(left, #1BA6B8, #49C0CF);
+			ul {
+				list-style: none;
+				margin: 0;
+				// margin: 0 auto;
+				padding: 0;
+				display: flex;
+				flex-direction: row;
+				flex-wrap: wrap;
+				justify-content: center;
+				// background-color: lightblue;
+
+				li {
+					color: #fff;
+					font-weight: 300;
+					width: 22%;
+					text-align: center;
+					padding: 20px 15px;
+					font-family: 'Roboto Condensed', sans-serif;
+					.fa {
+						font-size: 15rem;
+					}
+					h3 {
+						font-size: 2.8rem;
+						font-weight: 300;
+						margin: 15px 0;
+						letter-spacing: 1px;
+					}
+					p {
+						font-size: 1.6rem;
+						margin: 0 38px;
+						padding-bottom: 10px;
+						line-height: 2rem;
+					}
+
+					label {
+						display: block;
+						width: 150px;
+						margin: 15px auto;
+						text-align: center;
+						border: 2px solid white;
+						border-radius: 8px;
+						padding: 25px 15px;
+						font-size: 1.6rem;
+						transition: all 0.1s linear;
+					}
+					label:hover {
+						cursor:pointer;
+						background-color: #008096;
+					}
+					input[type=radio] {
+						display: none;
+					}
+					input[type=radio]:checked + label {
+						background-color: #fff;
+						color: #008096;
+					}
+				}
+				li:nth-of-type(1) {
+					background-color: #1BA6B8;
+					p {
+						padding-bottom: 30px;
+					}
+				}
+				li:nth-of-type(2) {
+					background-color: #27AEC0;
+				}
+				li:nth-of-type(3) {
+					background-color: #2FB6C7;
+					p {
+						padding-bottom: 30px;
+					}
+				}
+				li:nth-of-type(4) {
+					background-color: #49C0CF;
+					p {
+						padding-bottom: 30px;
+					}
+				}
+			}
+		}
+	}
+}
+
+@media (max-width: 920px) {
+	div {
+		.planOptions {
+			.planOptions__wrapper {
+				ul {
+					li {
+						width: 50%;
+						label {
+							width: 90%;
+						}
+					}
+				}
+			}
+		}
+	}
+}
+
+@media (max-width: 580px) {
+	div {
+		.planOptions {
+			.planOptions__wrapper {
+				ul {
+					li {
+						width: 100%;
+						.fa {
+							display: none;
+						}
+						label {
+							width: 90%;
+						}
+					}
+				}
+			}
+		}
+	}
+}

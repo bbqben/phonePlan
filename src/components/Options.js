@@ -4,7 +4,7 @@ export default function Option(props) {
 	return (
 		<li> 
 			<i className={props.data.optionImg} aria-hidden="true"></i>
-			<p>{props.data.optionTitle}</p>
+			<h3>{props.data.optionTitle}</h3>
 			<p>{props.data.optionDescription}</p>
 				
 

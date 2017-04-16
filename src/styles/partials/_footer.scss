@@ -1,0 +1,159 @@
+.planCalculations {
+	padding: 15px 0;
+	background-color: #464342;
+	font-family: 'Roboto Condensed', sans-serif;
+	text-align: center;
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+	align-items: baseline;
+	.operator {
+		color: #fff;
+		font-size: 7rem;
+		margin: 28px 35px;
+		line-height: 50px;
+	}
+
+	.planCost, .planDiscount{
+		p {
+			.dollar {
+				font-size: 3.6rem;
+				color: white;
+				position: relative;
+				left: 10px;
+				bottom: 25px;
+			}
+			.digits {
+				background-color: white;
+				display: inline-block;
+				padding: 10px 10px 10px 22.5px;
+				margin: 10px;
+				letter-spacing: 15px;
+				font-weight: 300;
+				font-size: 4.8rem;
+			}
+
+		}
+		p:last-child {
+			font-size: 1.8rem;
+			color: white;
+			margin: 0;
+		}
+	}
+}
+.planTotal {
+	p {
+		.dollar {
+			font-size: 6rem;
+			color: white;
+			position: relative;
+			left: 10px;
+			bottom: 40px;
+		}
+		.digits {
+			background-color: white;
+			display: inline-block;
+			padding: 10px 10px 10px 22.5px;
+			margin: 10px;
+			letter-spacing: 15px;
+			font-weight: 300;
+			font-size: 9rem;
+		}
+	}
+	p:last-child {
+		font-size: 1.8rem;
+		color: white;
+		margin: 0;
+	}
+}
+
+
+@media (max-width: 920px) {
+	.planCalculations {
+		padding: 10px 0;
+		.operator {
+			font-size: 7rem;
+			margin: 28px 5px;
+			line-height: 50px;
+		}
+
+		.planCost, .planDiscount{
+			p {
+				margin: 0;
+				.dollar {
+					font-size: 3.6rem;
+					left: 7px;
+					bottom: 15px;
+				}
+				.digits {
+					padding: 10px 5px 10px 15px;
+					letter-spacing: 10px;
+					font-size: 3.9rem;
+				}
+
+			}
+			p:last-child {
+				font-size: 1.6rem;
+				margin: 0;
+			}
+		}
+	}
+	.planTotal {
+		p {
+			.dollar {
+				font-size: 5rem;
+				left: 7px;
+				bottom: 35px;
+			}
+			.digits {
+				padding: 10px 5px 10px 15px;
+				letter-spacing: 10px;
+				font-size: 7rem;
+			}
+		}
+		p:last-child {
+			font-size: 1.6rem;
+			margin: 0;
+		}
+	}
+
+}
+
+@media (max-width: 580px) {
+	.planCalculations {
+		.operator {
+			font-size: 5rem;
+		}
+
+		.planCost, .planDiscount{
+			p {
+				.dollar {
+					font-size: 3rem;
+					left: 7px;
+					bottom: 12px;
+				}
+				.digits {
+					font-size: 3rem;
+				}
+			}
+		}
+	}
+	.planTotal {
+		p {
+			margin: 0;
+			.dollar {
+				font-size: 3.6rem;
+				left: 7px;
+				bottom: 20px;
+			}
+			.digits {
+				font-size: 3rem;
+			}
+		}
+		p:last-child {
+			position: relative;
+			bottom: 3px;
+		}
+	}
+
+}

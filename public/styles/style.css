@@ -130,3 +130,212 @@ legend, button::-moz-focus-inner, input::-moz-focus-inner {
 
 html {
   font-size: 62.5%; }
+
+.title {
+  padding: 25px 50px;
+  background-color: #008096; }
+  .title h1 {
+    font-size: 4rem;
+    font-family: 'Roboto Condensed', sans-serif;
+    font-weight: 300;
+    letter-spacing: 0.5px;
+    color: white;
+    margin: 0 0 5px 25px; }
+
+@media (max-width: 580px) {
+  .title {
+    text-align: center; } }
+
+div .planOptions {
+  background: linear-gradient(90deg, #1BA6B8 50%, #49C0CF 50%); }
+  div .planOptions .planOptions__wrapper {
+    max-width: 1200px;
+    margin: 0 auto; }
+    div .planOptions .planOptions__wrapper ul {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      display: -ms-flexbox;
+      display: flex;
+      -ms-flex-direction: row;
+          flex-direction: row;
+      -ms-flex-wrap: wrap;
+          flex-wrap: wrap;
+      -ms-flex-pack: center;
+          justify-content: center; }
+      div .planOptions .planOptions__wrapper ul li {
+        color: #fff;
+        font-weight: 300;
+        width: 22%;
+        text-align: center;
+        padding: 20px 15px;
+        font-family: 'Roboto Condensed', sans-serif; }
+        div .planOptions .planOptions__wrapper ul li .fa {
+          font-size: 15rem; }
+        div .planOptions .planOptions__wrapper ul li h3 {
+          font-size: 2.8rem;
+          font-weight: 300;
+          margin: 15px 0;
+          letter-spacing: 1px; }
+        div .planOptions .planOptions__wrapper ul li p {
+          font-size: 1.6rem;
+          margin: 0 38px;
+          padding-bottom: 10px;
+          line-height: 2rem; }
+        div .planOptions .planOptions__wrapper ul li label {
+          display: block;
+          width: 150px;
+          margin: 15px auto;
+          text-align: center;
+          border: 2px solid white;
+          border-radius: 8px;
+          padding: 25px 15px;
+          font-size: 1.6rem;
+          transition: all 0.1s linear; }
+        div .planOptions .planOptions__wrapper ul li label:hover {
+          cursor: pointer;
+          background-color: #008096; }
+        div .planOptions .planOptions__wrapper ul li input[type=radio] {
+          display: none; }
+        div .planOptions .planOptions__wrapper ul li input[type=radio]:checked + label {
+          background-color: #fff;
+          color: #008096; }
+      div .planOptions .planOptions__wrapper ul li:nth-of-type(1) {
+        background-color: #1BA6B8; }
+        div .planOptions .planOptions__wrapper ul li:nth-of-type(1) p {
+          padding-bottom: 30px; }
+      div .planOptions .planOptions__wrapper ul li:nth-of-type(2) {
+        background-color: #27AEC0; }
+      div .planOptions .planOptions__wrapper ul li:nth-of-type(3) {
+        background-color: #2FB6C7; }
+        div .planOptions .planOptions__wrapper ul li:nth-of-type(3) p {
+          padding-bottom: 30px; }
+      div .planOptions .planOptions__wrapper ul li:nth-of-type(4) {
+        background-color: #49C0CF; }
+        div .planOptions .planOptions__wrapper ul li:nth-of-type(4) p {
+          padding-bottom: 30px; }
+
+@media (max-width: 920px) {
+  div .planOptions .planOptions__wrapper ul li {
+    width: 50%; }
+    div .planOptions .planOptions__wrapper ul li label {
+      width: 90%; } }
+
+@media (max-width: 580px) {
+  div .planOptions .planOptions__wrapper ul li {
+    width: 100%; }
+    div .planOptions .planOptions__wrapper ul li .fa {
+      display: none; }
+    div .planOptions .planOptions__wrapper ul li label {
+      width: 90%; } }
+
+.planCalculations {
+  padding: 15px 0;
+  background-color: #464342;
+  font-family: 'Roboto Condensed', sans-serif;
+  text-align: center;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-direction: row;
+      flex-direction: row;
+  -ms-flex-pack: center;
+      justify-content: center;
+  -ms-flex-align: baseline;
+      align-items: baseline; }
+  .planCalculations .operator {
+    color: #fff;
+    font-size: 7rem;
+    margin: 28px 35px;
+    line-height: 50px; }
+  .planCalculations .planCost p .dollar, .planCalculations .planDiscount p .dollar {
+    font-size: 3.6rem;
+    color: white;
+    position: relative;
+    left: 10px;
+    bottom: 25px; }
+  .planCalculations .planCost p .digits, .planCalculations .planDiscount p .digits {
+    background-color: white;
+    display: inline-block;
+    padding: 10px 10px 10px 22.5px;
+    margin: 10px;
+    letter-spacing: 15px;
+    font-weight: 300;
+    font-size: 4.8rem; }
+  .planCalculations .planCost p:last-child, .planCalculations .planDiscount p:last-child {
+    font-size: 1.8rem;
+    color: white;
+    margin: 0; }
+
+.planTotal p .dollar {
+  font-size: 6rem;
+  color: white;
+  position: relative;
+  left: 10px;
+  bottom: 40px; }
+
+.planTotal p .digits {
+  background-color: white;
+  display: inline-block;
+  padding: 10px 10px 10px 22.5px;
+  margin: 10px;
+  letter-spacing: 15px;
+  font-weight: 300;
+  font-size: 9rem; }
+
+.planTotal p:last-child {
+  font-size: 1.8rem;
+  color: white;
+  margin: 0; }
+
+@media (max-width: 920px) {
+  .planCalculations {
+    padding: 10px 0; }
+    .planCalculations .operator {
+      font-size: 7rem;
+      margin: 28px 5px;
+      line-height: 50px; }
+    .planCalculations .planCost p, .planCalculations .planDiscount p {
+      margin: 0; }
+      .planCalculations .planCost p .dollar, .planCalculations .planDiscount p .dollar {
+        font-size: 3.6rem;
+        left: 7px;
+        bottom: 15px; }
+      .planCalculations .planCost p .digits, .planCalculations .planDiscount p .digits {
+        padding: 10px 5px 10px 15px;
+        letter-spacing: 10px;
+        font-size: 3.9rem; }
+    .planCalculations .planCost p:last-child, .planCalculations .planDiscount p:last-child {
+      font-size: 1.6rem;
+      margin: 0; }
+  .planTotal p .dollar {
+    font-size: 5rem;
+    left: 7px;
+    bottom: 35px; }
+  .planTotal p .digits {
+    padding: 10px 5px 10px 15px;
+    letter-spacing: 10px;
+    font-size: 7rem; }
+  .planTotal p:last-child {
+    font-size: 1.6rem;
+    margin: 0; } }
+
+@media (max-width: 580px) {
+  .planCalculations .operator {
+    font-size: 5rem; }
+  .planCalculations .planCost p .dollar, .planCalculations .planDiscount p .dollar {
+    font-size: 3rem;
+    left: 7px;
+    bottom: 12px; }
+  .planCalculations .planCost p .digits, .planCalculations .planDiscount p .digits {
+    font-size: 3rem; }
+  .planTotal p {
+    margin: 0; }
+    .planTotal p .dollar {
+      font-size: 3.6rem;
+      left: 7px;
+      bottom: 20px; }
+    .planTotal p .digits {
+      font-size: 3rem; }
+  .planTotal p:last-child {
+    position: relative;
+    bottom: 3px; } }
