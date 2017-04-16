@@ -25,14 +25,14 @@ export default function Option(props) {
 						return (
 							//This is done so that the last item 'No Data' will return
 							<div key={"option" + i}>
-								<input type="radio" id={`${props.data.optionTitle}${i}`} name={props.data.optionTitle} data-value={i} data-type={props.data.optionType}/>
+								<input type="radio" id={`${props.data.optionTitle}${i}`} name={props.data.optionTitle} data-value={i} data-type={props.data.optionType} onChange={props.handleChange}/>
 								<label htmlFor={`${props.data.optionTitle}${i}`} className={props.data.optionTitle}>No Data</label>
 							</div>
 						) 
 					} else { //Else if the current category is Data, then provide the label and price referenced with respect to the state currentLengthValue
 						return (
 							<div key={"option" + i}>
-								<input type="radio" id={`${props.data.optionTitle}${i}`} name={props.data.optionTitle} data-value={i} data-type={props.data.optionType}/>
+								<input type="radio" id={`${props.data.optionTitle}${i}`} name={props.data.optionTitle} data-value={i} data-type={props.data.optionType} onChange={props.handleChange}/>
 								<label htmlFor={`${props.data.optionTitle}${i}`} className={props.data.optionTitle}>{optionButton.optionButtonLabel[props.currentLengthValue]}</label>
 							</div>
 						) 

@@ -115,6 +115,9 @@ class App extends React.Component {
 		this.calculateTotal = this.calculateTotal.bind(this);
 		this.updatePrices = this.updatePrices.bind(this);
 		this.checkIfArray = this.checkIfArray.bind(this);
+		this.calculatePlanCost = this.calculatePlanCost.bind(this);
+		this.calculateDiscount = this.calculateDiscount.bind(this);
+		this.calculateTotal = this.calculateTotal.bind(this);
 	}
 
 
@@ -128,8 +131,19 @@ class App extends React.Component {
 		let dataValue = e.target.dataset.value;
 
 		if (dataType === "length") {
+
+			this.resetForm("Unlimited Talk");
+			this.resetForm("Unlimited Text");
+			this.resetForm("Data");
+
 			this.setState({
-				currentLengthValue: parseInt(dataValue)
+				currentLengthValue: parseInt(dataValue),
+				currentTalkValue: 3,
+				currentTextValue: 1,
+				currentDataValue: 3,
+				talkPrice: 0,
+				textPrice: 0,
+				dataPrice: 0
 			}, () => {
 				this.updatePrices();
 			})
@@ -155,6 +169,13 @@ class App extends React.Component {
 		console.log(`I made a change to ${dataType} and changed it to ${dataValue}`)
 	}
 
+	resetForm(formName) {
+		let elements = document.getElementsByName(formName);
+		elements.forEach((element) => {
+			element.checked = false;
+		})
+	}
+
 	updatePrices() {
 		let lengthPrice = data[0].optionButtons[this.state.currentLengthValue].optionValue;
 		let talkPrice = data[1].optionButtons[this.state.currentTalkValue].optionValue;
@@ -173,6 +194,8 @@ class App extends React.Component {
 			talkPrice: talkPrice,
 			textPrice: textPrice,
 			dataPrice: dataPrice
+		}, () => {
+			this.calculatePlanCost();
 		})
 	}
 
@@ -186,12 +209,75 @@ class App extends React.Component {
 		}
 	}
 
+	calculatePrice() {
+		//This will calculate plan cost, discount and then total
+	}
+
+	calculatePlanCost() {
+		let lengthPrice = this.state.lengthPrice;
+		let talkPrice = this.state.talkPrice;
+		let textPrice = this.state.textPrice;
+		let dataPrice = this.state.dataPrice;
+
+		let planCostValue = lengthPrice + talkPrice + textPrice + dataPrice;
+
+		this.setState({
+			planCostValue: planCostValue
+		}, () => {
+			this.calculateDiscount();
+		})
+	}
+	calculateDiscount() {
+		let lengthValue = this.state.currentLengthValue;
+		let talkValue = this.state.currentTalkValue;
+		let textValue = this.state.currentTextValue;
+		let dataValue = this.state.currentDataValue;
+		let discountValue = 0;
+
+
+		if (lengthValue === 0) {
+			discountValue = 0;
+		} else if (lengthValue === 1) { // If statement to detect if plan length is 30-day
+			//Discounts given for 30-day plans are as follows:
+			//Any 2 options is $5 off
+			//All 3 options selected is $20 off
+
+			if ((talkValue < 3) && (textValue === 0) && (dataValue < 3)) {
+				//Checks if all 3 options are selected
+				discountValue = 20;
+			} else if ((talkValue < 3 && textValue === 0) || (talkValue < 3 && dataValue < 3) || (textValue === 0 && dataValue < 3)) {
+				//Checks if at least 2 options are selected
+				discountValue = 5;
+			}
+
+		} else if (lengthValue === 2) { //If statement to detect if plan length is 90-day
+			//Discounts given for 90-day plans are as follows:
+			//Any 2 options are $15 off
+			//All 3 options selected is $60 off
+
+			if ((talkValue < 3) && (textValue === 0) && (dataValue < 3)) {
+				//Checks if all 3 options are selected
+				discountValue = 60;
+			} else if ((talkValue < 3 && textValue === 0) || (talkValue < 3 && dataValue < 3) || (textValue === 0 && dataValue < 3)) {
+				//Checks if at least 2 options are selected
+				discountValue = 15;
+			}
+
+		}
+		this.setState({
+			discountValue: discountValue
+		}, () => {
+			this.calculateTotal();
+		})
+	}
 	calculateTotal() {
-		//Calculate length value
-		
-		//Calculate talk value
-		//Calculate text value
-		//Calculate data value
+		let cost = this.state.planCostValue;
+		let discount = this.state.discountValue;
+		let total = cost - discount;
+
+		this.setState({
+			totalValue: total
+		})
 	}
 
 
