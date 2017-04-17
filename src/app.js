@@ -291,7 +291,6 @@ class App extends React.Component {
 					<div className="planOptions__wrapper">
 						<ul>
 							{data.map((option,i) => {
-								// console.log(option);
 								return <Options data={option} currentLengthValue={this.state.currentLengthValue} key={option.optionTitle + i} state={this.state} handleChange={this.handleChange}/>
 							})}
 						</ul>
